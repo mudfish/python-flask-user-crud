@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}"
+            rel="stylesheet">
+        <title>首页</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row justify-content-center align-items-center g-1">
+                <div class="col-6 pt-5">
+                    <!-- search -->
+                    <form action="/search" method="get">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder
+                                aria-label="Example text with button addon"
+                                aria-describedby="button-addon1" name="keyword" {% if keyword%} value="{{keyword}}" {% endif %}>
+                            <button class="btn btn-primary" type="submit"
+                                id="button-addon1">查询</button>
+                                <a class="btn btn-warning " href="/toAddPage">新增</a>
+                        </div>
+                    </form>
+
+                    
+
+                    <div
+                        class="table-responsive">
+                        <table
+                            class="table table-primary">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">姓名</th>
+                                    <th scope="col">性别</th>
+                                    <th scope="col">年龄</th>
+                                    <th scope="col">联系方式</th>
+                                    <th scope="col">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in items %}
+                                <tr>
+                                    {% for col in cols %}
+                                    <td>{{ item[col] }}</td>
+                                    {% endfor %}
+                                    <!-- 补操作列 -->
+                                    <td>
+                                        <a class="btn btn-sm btn-primary"
+                                            href="{{url_for('toEditPage',id=item['id'])}}">编辑</a>
+                                        <a class="btn btn-sm btn-danger"
+                                            href="{{url_for('remove',id=item['id'])}}"
+                                            onclick="return confirm('确定删除吗');" >删除</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                        <div class="bg-warning  ">{{success}}</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script
+            src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+
+    </body>
+</html>
