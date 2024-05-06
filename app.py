@@ -24,7 +24,7 @@ def index():
     try:
         with getconnection().cursor() as cursor:
             sql = "SELECT * FROM `tb_user`"
-            cols = ['id', 'name', 'age','gender','phone']
+            cols = ['id', 'name', 'gender','age','phone']
             cursor.execute(sql)
             result = cursor.fetchall()
             cursor.close()
@@ -40,7 +40,7 @@ def search():
     try:
         with getconnection().cursor() as cursor:
             sql = "SELECT * FROM `tb_user` where name like concat('%%',%s,'%%')"
-            cols = ['id', 'name', 'age','gender','phone']
+            cols = ['id', 'name', 'gender','age','phone']
             cursor.execute(sql,(keyword))
             result = cursor.fetchall()
             # print(result)
