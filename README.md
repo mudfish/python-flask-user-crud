@@ -14,3 +14,12 @@ python app.py
 `localhost:8001`
 
 ![alt text](image.png)
+
+# 捐赠
+- 觉得本项目对你有帮助的话，可捐赠任意金额以鼓励，谢谢！
+
+![alt text](donate.png)
+
+## 更多精彩资源
+- 这是一个资源站，后续会不断更新一些好用的东西或书籍教程，值得持续关注：
+[https://www.codegen.top/](https://www.codegen.top/)
